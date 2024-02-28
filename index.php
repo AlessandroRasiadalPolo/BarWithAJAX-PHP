@@ -16,8 +16,6 @@ include "./pages/DB.php";
     if(isset($_POST['Ordina'])){
         $newOrder = array("cameriere" => $_POST['sceltaCameriere'], "prodotto" => $_POST['sceltaProdotto'], "quantità" => $_POST['quantità'], "stato" => "in attesa");
         DB::insertNewOrder($newOrder);
-
-
     }
 ?>
 

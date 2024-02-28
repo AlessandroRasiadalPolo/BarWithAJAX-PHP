@@ -1,22 +1,30 @@
-function updateOrder(){
+function updateOrder() {
     fetch("../pages/methods.php", {
         method: 'GET'
     })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                // Aggiorna dinamicamente la tabella con i nuovi dati
-                var tableRow = '<tr><td>' + data.prodotto + '</td><td>' + data.quantità + '</td>' +
-                    '<td>' + data.cameriere + '</td><td>' + data.stato + '</td>' +
-                    <td>' + data.dataOra + '</td> +
-                '</tr>';
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            // Cancella il contenuto attuale della tabella
+            document.getElementById('orderTable').innerHTML = '';
+
+            // Aggiungi ogni ordine alla tabella
+            data.forEach(order => {
+                var tableRow = '<tr>' +
+                    '<td>' + order.prodotto + '</td>' +
+                    '<td>' + order.quantità + '</td>' +
+                    '<td>' + order.cameriere + '</td>' +
+                    '<td>' + order.stato + '</td>' +
+                    '<td>' + order.dataOra + '</td>' +
+                    '</tr>';
                 document.getElementById('orderTable').innerHTML += tableRow;
-            })
-            .catch(error => {
-                console.log('Errore durante l\'aggiornamento della tabella:', error);
-                setTimeout(updateOrder, 5000);
             });
+        })
+        .catch(error => {
+            console.error('Errore durante l\'aggiornamento della tabella:', error);
+            setTimeout(updateOrder, 5000);
+        });
 }
 
 updateOrder();
