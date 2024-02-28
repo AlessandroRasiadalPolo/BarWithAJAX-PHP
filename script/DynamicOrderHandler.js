@@ -1,16 +1,24 @@
 function updateOrder(){
-    document.getElementById('orderTable').addEventListener('click', function() {
-        fetch('https://example.com/api/user')
-            .then(function(response) {
-                return response.json(); // Trasforma la risposta in JSON
+    fetch("../pages/methods.php", {
+        method: 'GET'
+    })
+            .then(response => {
+                return response.json();
             })
-            .then(function(data) {
-                // Aggiorna il contenuto di #user-data con i dati ricevuti
-                document.getElementById('user-data').innerHTML = 'Nome: ' + data.name + ', Email: ' + data.email;
+            .then(data => {
+                // Aggiorna dinamicamente la tabella con i nuovi dati
+                var tableRow = '<tr><td>' + data.prodotto + '</td><td>' + data.quantità + '</td>' +
+                    '<td>' + data.cameriere + '</td><td>' + data.stato + '</td>' +
+                    <td>' + data.dataOra + '</td> +
+                '</tr>';
+                document.getElementById('orderTable').innerHTML += tableRow;
             })
-            .catch(function(error) {
-                console.log('Errore durante il recupero dei dati:', error);
+            .catch(error => {
+                console.log('Errore durante l\'aggiornamento della tabella:', error);
+                setTimeout(updateOrder, 5000);
             });
-    });
-
 }
+
+updateOrder();
+
+
