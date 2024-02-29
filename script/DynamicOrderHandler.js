@@ -17,16 +17,20 @@ function updateOrder() {
                     '<td>' + order.cameriere + '</td>' +
                     '<td>' + order.stato + '</td>' +
                     '<td>' + order.dataOra + '</td>' +
+                    '<td><label>Cambia Stato</label><input type="checkbox" name="' + order.IdOrdinazione + '"></td>' +
                     '</tr>';
+
                 document.getElementById('orderTable').innerHTML += tableRow;
             });
+
+            // Ripeti il polling dopo un intervallo di tempo (ad esempio, ogni 5 secondi)
+            setTimeout(updateOrder, 5000);
         })
         .catch(error => {
             console.error('Errore durante l\'aggiornamento della tabella:', error);
+            // Ripeti il polling dopo un intervallo di tempo anche in caso di errore
             setTimeout(updateOrder, 5000);
         });
 }
 
-updateOrder();
-
-
+updateOrder(); // Avvia il polling quando la pagina viene caricata
