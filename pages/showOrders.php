@@ -60,8 +60,10 @@
             ?>
             </tbody>
         </table>
+        <input type="submit" value="Aggiorna Stato" name = "aggiorna" class="submit-button" style="margin-bottom: 15px">
+
     </form>
-    <input type="submit" value="Aggiorna" id = "update-table" class="submit-button">
+    <input type="submit" value="Aggiorna Ordini" id = "update-table" class="submit-button">
 
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
         <h1>Aggiungi un filtro</h1>
