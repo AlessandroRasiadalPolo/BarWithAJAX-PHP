@@ -42,7 +42,7 @@ include "./pages/DB.php";
         <option value="Elisa">Elisa</option>
     </select>
 
-    <input type="submit" value="Ordina" name = "Ordina">
+    <input type="submit" value="Ordina"  name = "Ordina">
 </form>
 
 <a href="pages/showOrders.php">Mostra gli ordini</a>

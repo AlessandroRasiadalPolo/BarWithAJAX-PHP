@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../style/showOrderStyle.css">
+    <script src = "../script/DynamicOrderHandler.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -59,8 +60,8 @@
             ?>
             </tbody>
         </table>
-        <input type="submit" value="Aggiorna" name="aggiorna" class="submit-button">
     </form>
+    <input type="submit" value="Aggiorna" id = "update-table" class="submit-button">
 
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
         <h1>Aggiungi un filtro</h1>
