@@ -65,13 +65,13 @@ class DB
 
             $sql = "SELECT O.IDOrdinazione, P.Nome AS NomeProdotto, P.Prezzo AS Prezzo, O.Quantita, C.Nome AS Cameriere, O.Stato, O.DataOra  
                 FROM Ordinazione O INNER JOIN CAMERIERE C ON(O.IDCameriere = C.IDCameriere) 
-                    INNER JOIN Prodotto P ON (P.IDProdotto = O.IDProdotto)";
+                    INNER JOIN Prodotto P ON (P.IDProdotto = O.IDProdotto) ORDER BY DataOra";
             $result = $con->query($sql);
         }
         else {
             $sql = "SELECT O.IDOrdinazione, P.Nome AS NomeProdotto, P.Prezzo AS Prezzo, O.Quantita, C.Nome AS Cameriere, O.Stato, O.DataOra  
                 FROM Ordinazione O INNER JOIN CAMERIERE C ON(O.IDCameriere = C.IDCameriere) 
-                    INNER JOIN Prodotto P ON (P.IDProdotto = O.IDProdotto) WHERE O.Stato = ?";
+                    INNER JOIN Prodotto P ON (P.IDProdotto = O.IDProdotto) WHERE O.Stato = ? ORDER BY DataOra";
             $stmt = $con->prepare($sql);
             $stmt->bind_param("s", $filter);
             $stmt->execute();
