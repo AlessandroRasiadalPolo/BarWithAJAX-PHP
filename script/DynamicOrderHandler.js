@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-document.getElementById('update-table').addEventListener('click', function() {
+document.getElementById('update-table').addEventListener('click', updateTable) });
+
+function updateTable(){
     // Effettua una richiesta fetch all'endpoint API
     fetch('../pages/methods.php')
         .then(function (response) {
@@ -32,5 +34,4 @@ document.getElementById('update-table').addEventListener('click', function() {
             // Gestisci gli errori qui
             console.error(error);
         });
-    });
-});
+}
