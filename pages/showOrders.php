@@ -64,16 +64,13 @@
 
     </form>
     <input type="submit" value="Aggiorna Ordini" id = "update-table" class="submit-button">
-
-    <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
         <h1>Aggiungi un filtro</h1>
-        <select name="filtro" id="">
+        <select name="filtro" id="sceltaFiltro">
             <option value=""></option>
             <option value="in attesa">Attende</option>
             <option value="servito">Servito</option>
         </select>
-        <input type="submit" value="Filtra" name="filtra" class="submit-button">
-    </form>
+        <input type="submit" value="Filtra" name="filtra" class="submit-button" id = "selectFiltro">
 </div>
 </body>
 </html>
