@@ -61,9 +61,11 @@ function createTable(data){
             '<td>' + order.quantità + '</td>' +
             '<td>' + order.cameriere + '</td>' +
             '<td>' + order.stato + '</td>' +
-            '<td>' + order.dataOra + '</td>' +
-            '<td><label>Cambia Stato</label><input type="checkbox" name="' + order.IdOrdinazione + '"></td>' +
-            '</tr>';
+            '<td>' + order.dataOra + '</td>';
+            if(order.stato === "in attesa")
+                tableHTML+= '<td><label>Cambia Stato</label><input type="checkbox" name="' + order.IdOrdinazione + '"></td>';
+
+            tableHTML+= '</tr>';
     });
 
     return tableHTML;
