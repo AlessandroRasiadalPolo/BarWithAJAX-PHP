@@ -14,21 +14,8 @@ function updateTable(){
             return response.json();
         })
         .then(function (data) {
-            // Costruisci il contenuto della tabella con i dati ricevuti
-            var tableHTML = ''; // Inizializza la stringa HTML per le righe della tabella
-            data.forEach(function (order) {
-                // Per ogni ordine, crea una riga della tabella con i dati dell'ordine
-                tableHTML += '<tr>' +
-                    '<td>' + order.prodotto + '</td>' +
-                    '<td>' + order.quantità + '</td>' +
-                    '<td>' + order.cameriere + '</td>' +
-                    '<td>' + order.stato + '</td>' +
-                    '<td>' + order.dataOra + '</td>' +
-                    '<td><label>Cambia Stato</label><input type="checkbox" name="' + order.IdOrdinazione + '"></td>' +
-                    '</tr>';
-            });
             // Aggiorna il contenuto della tabella con tutte le righe generate
-            document.getElementById('orderTable').innerHTML = tableHTML;
+            document.getElementById('orderTable').innerHTML = createTable();
         })
         .catch(function (error) {
             // Gestisci gli errori qui
@@ -53,24 +40,31 @@ function filterOrders(){
         })
         .then(function (data) {
             // Costruisci il contenuto della tabella con i dati ricevuti
-            var tableHTML = ''; // Inizializza la stringa HTML per le righe della tabella
-            data.forEach(function (order) {
-                // Per ogni ordine, crea una riga della tabella con i dati dell'ordine
-                tableHTML += '<tr>' +
-                    '<td>' + order.prodotto + '</td>' +
-                    '<td>' + order.quantità + '</td>' +
-                    '<td>' + order.cameriere + '</td>' +
-                    '<td>' + order.stato + '</td>' +
-                    '<td>' + order.dataOra + '</td>' +
-                    '<td><label>Cambia Stato</label><input type="checkbox" name="' + order.IdOrdinazione + '"></td>' +
-                    '</tr>';
-            });
             // Aggiorna il contenuto della tabella con tutte le righe generate
-            document.getElementById('orderTable').innerHTML = tableHTML;
+            document.getElementById('orderTable').innerHTML = createTable(data);
         })
         .catch(function (error) {
             // Gestisci gli errori qui
             console.error(error);
         });
+}
 
+
+
+
+function createTable(data){
+    var tableHTML = "";
+    data.forEach(function (order) {
+        // Per ogni ordine, crea una riga della tabella con i dati dell'ordine
+        tableHTML += '<tr>' +
+            '<td>' + order.prodotto + '</td>' +
+            '<td>' + order.quantità + '</td>' +
+            '<td>' + order.cameriere + '</td>' +
+            '<td>' + order.stato + '</td>' +
+            '<td>' + order.dataOra + '</td>' +
+            '<td><label>Cambia Stato</label><input type="checkbox" name="' + order.IdOrdinazione + '"></td>' +
+            '</tr>';
+    });
+
+    return tableHTML;
 }
