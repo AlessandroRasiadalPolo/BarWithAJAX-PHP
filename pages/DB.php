@@ -17,6 +17,31 @@ class DB
         return $conn;
     }
 
+    public static function getElements($element)
+    {
+        $conn = self::connect();
+        $tables = ["ordinazione", "prodotto", "cameriere"];
+
+
+        if($conn == null || !in_array($element, $tables))
+            return null;
+
+        $q = "SELECT * FROM ". $element;
+
+        $result = $conn->query($q);
+        $camerieri = array();
+
+        if($result->num_rows > 0)
+            while($row = $result->fetch_assoc())
+            {
+                $cameriere = $row['Nome'];
+                $camerieri[] = $cameriere;
+            }
+
+        return json_encode($camerieri);
+
+    }
+
     public static function insertNewOrder($order){
 
         $conn = self::connect();

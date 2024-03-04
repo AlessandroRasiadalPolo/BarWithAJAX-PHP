@@ -26,20 +26,30 @@ include "./pages/DB.php";
     <label for="">Inserire il prodotto</label>
     <select name="sceltaProdotto" id="" required>
         <option value=""></option>
-        <option value="Formaggio">Formaggio</option>
-        <option value="Salame">Salame</option>
-        <option value="Carbonara">Carbonara</option>
+        <?php
+        $camerieri = json_decode(DB::getElements("prodotto"), true);
+        if ($camerieri != null) {
+            foreach ($camerieri as $c) {
+                echo "<option value='{$c}'>{$c}</option>";
+            }
+        }
+        ?>
     </select>
     <label for="">Quantità</label>
-    <input type="number" name="quantità" id="" required>
+    <input type="number" name="quantità" min="1" max="20" step="1" required>
     <br><br>
 
     <label for="">Inserire il cameriere</label>
     <select name="sceltaCameriere" id="" required>
         <option value=""></option>
-        <option value="Giovanni">Giovanni</option>
-        <option value="Luciano">Luciano</option>
-        <option value="Elisa">Elisa</option>
+        <?php
+        $camerieri = json_decode(DB::getElements("cameriere"), true);
+        if ($camerieri != null) {
+            foreach ($camerieri as $c) {
+                echo "<option value='{$c}'>{$c}</option>";
+            }
+        }
+        ?>
     </select>
 
     <input type="submit" value="Ordina"  name = "Ordina">
