@@ -15,7 +15,7 @@ function updateTable(){
         })
         .then(function (data) {
             // Aggiorna il contenuto della tabella con tutte le righe generate
-            document.getElementById('orderTable').innerHTML = createTable();
+            document.getElementById('orderTable').innerHTML = createTable(data);
         })
         .catch(function (error) {
             // Gestisci gli errori qui
